@@ -1,0 +1,29 @@
+//Question 22
+
+const form = document.querySelector('#my-form');
+const userName = document.querySelector('#name');
+const email = document.querySelector('#email');
+const ul = document.querySelector('#users');
+const msg = document.querySelector('.msg');
+
+form.addEventListener('submit', onSubmit);
+
+function onSubmit(e){
+    e.preventDefault();
+    if(userName.value === '' || email.value === ''){
+        msg.textContent = 'Please enter all fields';
+        msg.style.color = 'red';
+        setTimeout(() => msg.remove(), 3000);
+    } else {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(`${userName.value} : ${email.value}`))
+
+        ul.appendChild(li);
+
+        // clear fields
+        userName.value = '';
+        email.value = '';
+    }
+}
+
+
